@@ -16,7 +16,6 @@ Com um design em tons de roxo e rosa, animações e efeitos sutis, ele reflete m
 ## 🚀 Acessar
 📍 Em breve disponível via GitHub Pages:  
 [https://eigabycastro.github.io/Meu-Portifolio/](https://eigabycastro.github.io/Meu-Portifolio/)  
-*(Troque pelo link real assim que publicar!)*
 
 ---
 
