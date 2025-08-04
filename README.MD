@@ -2,7 +2,7 @@
 
 Bem-vindo(a) ao meu portfólio!  
 Este projeto foi criado para apresentar de forma moderna e delicada quem sou, meus trabalhos, projetos e habilidades.  
-Com um design em tons de roxo e rosa, animações e efeitos sutis, ele reflete minha identidade: feminina, criativa e apaixonada por tecnologia. 🦋
+🦋
 
 ---
 
