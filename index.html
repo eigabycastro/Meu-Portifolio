@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio de Gabrielly Castro - Desenvolvedora Front-End e Designer UI/UX">
+    <title>Gabrielly Castro | Desenvolvedora Front-End & Designer UI/UX</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="container header-inner">
+            <div class="logo">🦋 <span>Gaby</span>Castro</div>
+            <nav>
+                <ul>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#depoimentos">Depoimentos</a></li>
+                    <li><a href="#contato" class="btn-contato">Contato</a></li>
+                    <li><button id="toggle-dark" aria-label="Alternar modo escuro"><i class="fas fa-moon"></i> </button>
+                    </li>
+                </ul>
+                <button class="menu-mobile" aria-label="Menu mobile"><i class="fas fa-bars"></i></button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-inner">
+                <div class="hero-content">
+                    <h1>Oi, eu sou a <span class="destaque">Gabrielly Castro</span></h1>
+                    <p class="subtitulo">Desenvolvedora Front-End & Designer UI/UX</p>
+                    <p class="descricao">Crio experiências digitais modernas, intuitivas e visualmente impressionantes.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#projetos" class="btn btn-primary">
+                            <i class="fas fa-eye"></i> Ver projetos
+                        </a>
+                        <a href="#contato" class="btn btn-secondary">
+                            <i class="fas fa-paper-plane"></i> Fale comigo
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="image.jpg" alt="foto" class="avatar">
+                    <div class="decoracao"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="sobre">
+            <div class="container sobre-inner">
+                <div class="sobre-content">
+                    <h2>Sobre <span>mim</span></h2>
+                    <p>Sou a Gaby, tenho 20 anos e sou apaixonada por criar sites que encantam os olhos e por garantir
+                        que a tecnologia funcione direitinho no dia a dia. Fiz técnico em Informática e hoje curso
+                        Sistemas de Informação, unindo criatividade, conhecimento técnico e sensibilidade estética.</p>
+                    <p>Adoro transformar ideias em realidade digital, além de ajudar quem precisa com manutenção,
+                        upgrades e aquele cuidado que só quem entende de computador de verdade pode oferecer.</p>
+                    <p>Minha abordagem combina atenção aos detalhes, pensamento criativo e as melhores práticas de
+                        desenvolvimento para entregar produtos digitais que não apenas impressionam visualmente, mas
+                        também proporcionam uma experiência incrível para quem usa.</p>
+                    <div class="skills">
+                        <h3>Minhas habilidades</h3>
+                        <div class="skills-list">
+                            <span>HTML5 & CSS3</span>
+                            <span>JavaScript</span>
+                            <span>React</span>
+                            <span>UI/UX Design</span>
+                            <span>Figma</span>
+                            <span>Canva</span>
+                            <span>Responsive Design</span>
+                            <span>Montagem e manutenção de computadores</span>
+                            <span>Upgrades</span>
+                            <span>Formatação</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="sobre-image">
+                    <img src="rabbit-lady.gif" alt="coelho" class="sobre-img">
+                </div>
+            </div>
+        </section>
+
+        <section id="projetos" class="projetos">
+            <div class="container">
+                <h2>Meus <span>projetos</span></h2>
+                <p class="section-desc">Alguns dos trabalhos que desenvolvi .</p>
+
+                <div class="projetos-grid">
+                    <div class="projeto">
+                        <div class="projeto-img">
+                            <img src="Lading_Page.png" alt="Projeto 1">
+                            <div class="projeto-links">
+                                <a href="https://github.com/eigabycastro/Lading-Page" class="projeto-link"
+                                    aria-label="Código no GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="projeto-info">
+                            <h3>Landing Page Moderna</h3>
+                            <p>Design e desenvolvimento de landing page responsiva.</p>
+                            <div class="projeto-tags">
+                                <span>HTML/CSS</span>
+                                <span>JavaScript</span>
+                                <span>UI Design</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="projeto">
+                        <div class="projeto-img">
+                            <img src="tela.jpeg" alt="Projeto 2">
+                            <div class="projeto-links">
+                                <a href="https://github.com/eigabycastro/Automatiza-o_Pagamentos" class="projeto-link"
+                                    aria-label="Código no GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="projeto-info">
+                            <h3>Automação de Processos de Pagamento – Integração Outlook + Google Sheets + Power BI</h3>
+                            <p>Este projeto automatiza o recebimento e o controle de pedidos de pagamento feitos por
+                                e-mail, com integração entre Outlook, Google Sheets e Power BI.</p>
+                            <div class="projeto-tags">
+                                <span>Python</span>
+                                <span>Prototipação</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ver-mais">
+                    <a href="#" class="btn btn-secondary">
+                        <i class="fas fa-plus"></i> Ver todos os projetos
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicos" class="servicos">
+            <div class="container">
+                <h2>O que eu <span>faço</span></h2>
+                <p class="section-desc">Serviços que ofereço para transformar suas ideias em realidade digital.</p>
+
+                <div class="servicos-grid">
+                    <div class="servico-card">
+                        <div class="servico-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Desenvolvimento Front-End</h3>
+                        <p>Criação de interfaces web responsivas, performáticas e acessíveis usando as melhores
+                            tecnologias.</p>
+                    </div>
+
+                    <div class="servico-card">
+                        <div class="servico-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3>Design UI/UX</h3>
+                        <p>Design de interfaces intuitivas e agradáveis com foco na experiência do usuário.</p>
+                    </div>
+
+                    <div class="servico-card">
+                        <div class="servico-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Design Responsivo</h3>
+                        <p>Sites que se adaptam perfeitamente a qualquer dispositivo, do mobile ao desktop.</p>
+                    </div>
+                    <div class="servico-card">
+                        <div class="servico-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>Manutenção de Computadores</h3>
+                        <p>Formatação, limpeza preventiva, upgrades de hardware, diagnóstico e solução de problemas para
+                            manter tudo funcionando sem dor de cabeça.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="depoimentos" class="depoimentos">
+            <div class="container">
+                <h2>Depoimentos</h2>
+                <p class="section-desc">O que clientes e colegas dizem sobre meu trabalho.</p>
+
+                <div class="depoimentos-carrossel">
+                    <div class="depoimento">
+                        <div class="depoimento-content">
+                            <div class="depoimento-texto">
+                                <i class="fas fa-quote-left"></i>
+                                <p>A Gabrielly transformou completamente nosso site, criando uma interface moderna e
+                                    intuitiva que aumentou significativamente nosso engajamento.</p>
+                            </div>
+                            <div class="depoimento-autor">
+                                <img src="cliente1.jpg" alt="Cliente A">
+                                <div>
+                                    <h4>Carlos Silva</h4>
+                                    <span>CEO, TechSolutions</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="depoimento">
+                        <div class="depoimento-content">
+                            <div class="depoimento-texto">
+                                <i class="fas fa-quote-left"></i>
+                                <p>Trabalho criativo, atenção aos detalhes e entrega dentro do prazo. Superou todas as
+                                    nossas expectativas!</p>
+                            </div>
+                            <div class="depoimento-autor">
+                                <img src="cliente2.jpg" alt="Cliente B">
+                                <div>
+                                    <h4>Ana Oliveira</h4>
+                                    <span>Diretora de Marketing, DigitalMind</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="contato">
+            <div class="container contato-inner">
+                <div class="contato-content">
+                    <h2>Vamos <span>conversar</span>?</h2>
+                    <p>Estou disponível para novos projetos e oportunidades. Entre em contato e vamos criar algo
+                        incrível juntos!</p>
+
+                    <div class="contato-info">
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>gabycastropp@gmail.com</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>(35) 98409-8136</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fab fa-linkedin-in"></i>
+                            <span>linkedin.com/in/gabriellycastro</span>
+                        </div>
+                    </div>
+
+                    <div class="contato-redes">
+                        <a href="https://github.com/eigabycastro" class="rede-social" aria-label="GitHub"><i
+                                class="fab fa-github"></i></a>
+                        <a href="https://www.instagram.com/eigabycastro/profilecard/?igsh=MXdpb2xnZzJ3aGE5cw=="
+                            class="rede-social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+
+                    </div>
+                </div>
+
+                <form class="contato-form" action="https://formsubmit.co/gabycastropp@gmail.com" method="POST">
+                    <input type="hidden" name="_next" value="https://eigabycastro.github.io/Meu-Portifolio">
+                    <input type="hidden" name="_captcha" value="false">
+
+                    <div class="form-group">
+                        <label for="nome">Seu nome completo</label>
+                        <input type="text" id="nome" name="nome" required>
+                        <span class="focus-border"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Seu melhor e-mail</label>
+                        <input type="email" id="email" name="email" required>
+                        <span class="focus-border"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensagem">Sua mensagem</label>
+                        <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+                        <span class="focus-border"></span>
+                    </div>
+                    <div class="form-footer">
+                        <button type="submit" class="btn-primary">
+                            <span class="btn-text">Enviar mensagem</span>
+                            <span class="btn-icon">
+                                <i class="fas fa-paper-plane"></i>
+                            </span>
+                        </button>
+
+                        <div class="form-feedback"></div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo">🦋 <span>Gaby</span>Castro</div>
+                    <p>Criando experiências digitais memoráveis.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Links rápidos</h4>
+                    <ul>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#projetos">Projetos</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contato">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> gabycastropp@gmail.com</li>
+                        <li><i class="fab fa-whatsapp"></i> (35) 98409-8136</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 Gabrielly Castro. Todos os direitos reservados.</p>
+                <div class="footer-redes">
+                    <a href="https://github.com/eigabycastro" class="rede-social" aria-label="GitHub"><i
+                            class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/gabriellycastropaula?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                        class="rede-social" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/eigabycastro/profilecard/?igsh=MXdpb2xnZzJ3aGE5cw=="
+                        class="rede-social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <!-- Borboleta mouse -->
+
+    <div id="custom-cursor" class="custom-cursor">
+        <img src="borboleta.png" alt="Cursor de borboleta">
+    </div>
+</body>
+
+</html>
