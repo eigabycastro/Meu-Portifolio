@@ -132,54 +132,118 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
-// Controle do Formulário Melhorado
+// Controle do Formulário 
 document.addEventListener('DOMContentLoaded', function () {
-  const form = document.querySelector('.contato-form');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
+    const form = document.querySelector('.contato-form');
+    if (form) {
 
-      const submitBtn = form.querySelector('button[type="submit"]');
-      const feedback = form.querySelector('.form-feedback');
+        const formGroups = form.querySelectorAll('.form-group');
+        formGroups.forEach(group => {
+            group.classList.add('floating');
+        });
 
-      // Desabilita o botão durante o envio
-      submitBtn.disabled = true;
-      submitBtn.querySelector('.btn-text').textContent = 'Enviando...';
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
 
-      // Simulação de envio (substitua por AJAX real)
-      setTimeout(() => {
-        // Feedback de sucesso
-        feedback.textContent = 'Mensagem enviada com sucesso! Entrarei em contato em breve.';
-        feedback.classList.add('success');
-        feedback.style.display = 'block';
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const feedback = form.querySelector('.form-feedback');
+            const formData = new FormData(form);
 
-        // Reset do formulário
-        form.reset();
+            // Validação simples
+            let isValid = true;
+            form.querySelectorAll('[required]').forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.classList.add('error');
+                } else {
+                    input.classList.remove('error');
+                }
+            });
 
-        // Restaura o botão
-        setTimeout(() => {
-          submitBtn.disabled = false;
-          submitBtn.querySelector('.btn-text').textContent = 'Enviar mensagem';
+            if (!isValid) {
+                feedback.textContent = 'Por favor, preencha todos os campos obrigatórios.';
+                feedback.classList.add('error');
+                feedback.style.display = 'block';
+                
+                setTimeout(() => {
+                    feedback.style.display = 'none';
+                    feedback.classList.remove('error');
+                }, 5000);
+                return;
+            }
 
-          // Esconde o feedback após 5 segundos
-          setTimeout(() => {
-            feedback.style.display = 'none';
-            feedback.classList.remove('success');
-          }, 5000);
-        }, 1000);
-      }, 1500);
-    });
+            // Desabilita o botão durante o envio
+            submitBtn.disabled = true;
+            submitBtn.querySelector('.btn-text').textContent = 'Enviando...';
 
-    // Validação em tempo real
-    const inputs = form.querySelectorAll('input, textarea');
-    inputs.forEach(input => {
-      input.addEventListener('input', function () {
-        if (this.value.trim() !== '') {
-          this.classList.add('has-value');
-        } else {
-          this.classList.remove('has-value');
-        }
-      });
-    });
-  }
+            // Simulação de envio (substitua por AJAX real)
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Feedback de sucesso
+                    feedback.textContent = 'Mensagem enviada com sucesso! Entrarei em contato em breve.';
+                    feedback.classList.add('success');
+                    feedback.style.display = 'block';
+                    form.reset();
+                    
+                    // Remove o estado "preenchido" dos campos
+                    form.querySelectorAll('.form-group.floating input, .form-group.floating textarea').forEach(input => {
+                        input.classList.remove('has-value');
+                    });
+                } else {
+                    throw new Error('Erro no envio');
+                }
+            })
+            .catch(error => {
+                feedback.textContent = 'Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente mais tarde.';
+                feedback.classList.add('error');
+                feedback.style.display = 'block';
+            })
+            .finally(() => {
+                // Restaura o botão
+                submitBtn.disabled = false;
+                submitBtn.querySelector('.btn-text').textContent = 'Enviar mensagem';
+
+                // Esconde o feedback após 5 segundos
+                setTimeout(() => {
+                    feedback.style.display = 'none';
+                    feedback.classList.remove('success', 'error');
+                }, 5000);
+            });
+        });
+
+        // Validação em tempo real
+        const inputs = form.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('input', function () {
+                if (this.value.trim() !== '') {
+                    this.classList.add('has-value');
+                    this.classList.remove('error');
+                } else {
+                    this.classList.remove('has-value');
+                }
+                
+                // Validação de e-mail
+                if (this.type === 'email' && this.value.trim() !== '') {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(this.value)) {
+                        this.classList.add('error');
+                    } else {
+                        this.classList.remove('error');
+                    }
+                }
+            });
+            
+            // Adiciona classe quando o campo tem valor (para recarregamentos de página)
+            if (input.value.trim() !== '') {
+                input.classList.add('has-value');
+            }
+        });
+    }
 });
