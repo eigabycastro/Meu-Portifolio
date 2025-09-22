@@ -84,12 +84,31 @@ document.addEventListener('DOMContentLoaded', () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('animated');
+        // Diferentes animações para diferentes seções
+        if (entry.target.classList.contains('hero-inner')) {
+          entry.target.classList.add('fade-in-up');
+        } else if (entry.target.classList.contains('sobre-inner')) {
+          entry.target.classList.add('slide-in-left');
+        } else if (entry.target.classList.contains('projetos')) {
+          entry.target.classList.add('scale-in');
+        } else if (entry.target.classList.contains('servicos')) {
+          entry.target.classList.add('fade-in');
+        } else if (entry.target.classList.contains('depoimentos')) {
+          entry.target.classList.add('slide-in-right');
+        } else if (entry.target.classList.contains('contato-inner')) {
+          entry.target.classList.add('fade-in-up');
+        } else if (entry.target.classList.contains('projeto') || 
+                   entry.target.classList.contains('servico-card') || 
+                   entry.target.classList.contains('depoimento')) {
+          entry.target.classList.add('fade-in-up');
+        }
         observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.2 });
 
-  document.querySelectorAll('.projeto, .servico-card, .depoimento').forEach(el => observer.observe(el));
+  // Observar seções principais e elementos individuais
+  document.querySelectorAll('.hero-inner, .sobre-inner, .projetos, .servicos, .depoimentos, .contato-inner, .projeto, .servico-card, .depoimento').forEach(el => observer.observe(el));
 
   // ======= Formulário de contato =======
   const contactForm = document.querySelector('.contato-form');
@@ -132,11 +151,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
+
 // Controle do Formulário 
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.querySelector('.contato-form');
     if (form) {
-
         const formGroups = form.querySelectorAll('.form-group');
         formGroups.forEach(group => {
             group.classList.add('floating');
@@ -247,3 +266,134 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+// ======= Formulário de contato =======
+const contactForm = document.querySelector('.contato-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const feedback = contactForm.querySelector('.form-feedback');
+        const formData = new FormData(contactForm);
+
+        // Validação simples
+        let isValid = true;
+        contactForm.querySelectorAll('[required]').forEach(input => {
+            if (!input.value.trim()) {
+                isValid = false;
+                input.classList.add('error');
+            } else {
+                input.classList.remove('error');
+            }
+        });
+
+        // Validação de e-mail
+        const emailInput = contactForm.querySelector('input[name="email"]');
+        if (emailInput && emailInput.value.trim()) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(emailInput.value)) {
+                isValid = false;
+                emailInput.classList.add('error');
+                if (feedback) {
+                    feedback.textContent = 'Por favor, insira um e-mail válido.';
+                    feedback.classList.add('error');
+                    feedback.style.display = 'block';
+                    setTimeout(() => {
+                        feedback.style.display = 'none';
+                        feedback.classList.remove('error');
+                    }, 5000);
+                }
+                return;
+            }
+        }
+
+        if (!isValid) {
+            if (feedback) {
+                feedback.textContent = 'Por favor, preencha todos os campos obrigatórios.';
+                feedback.classList.add('error');
+                feedback.style.display = 'block';
+                setTimeout(() => {
+                    feedback.style.display = 'none';
+                    feedback.classList.remove('error');
+                }, 5000);
+            }
+            return;
+        }
+
+        // Desabilita o botão durante o envio
+        submitBtn.disabled = true;
+        submitBtn.querySelector('.btn-text').textContent = 'Enviando...';
+
+        // Envio para o Formspree via AJAX
+        fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json, text/plain, */*'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json(); // Tenta parsear JSON para sucesso
+            } else {
+                throw new Error(`Erro HTTP: ${response.status}`);
+            }
+        })
+        .then(data => {
+            if (feedback) {
+                feedback.textContent = 'Mensagem enviada com sucesso! Entrarei em contato em breve.';
+                feedback.classList.add('success');
+                feedback.style.display = 'block';
+                contactForm.reset();
+                contactForm.querySelectorAll('.form-group.floating input, .form-group.floating textarea').forEach(input => {
+                    input.classList.remove('has-value');
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Erro no envio:', error);
+            if (feedback) {
+                feedback.textContent = 'Ocorreu um erro ao enviar a mensagem. Tente novamente mais tarde.';
+                feedback.classList.add('error');
+                feedback.style.display = 'block';
+            }
+        })
+        .finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.querySelector('.btn-text').textContent = 'Enviar mensagem';
+            if (feedback) {
+                setTimeout(() => {
+                    feedback.style.display = 'none';
+                    feedback.classList.remove('success', 'error');
+                }, 5000);
+            }
+        });
+    });
+
+    // Validação em tempo real
+    const inputs = contactForm.querySelectorAll('input, textarea');
+    inputs.forEach(input => {
+        input.addEventListener('input', function () {
+            if (this.value.trim() !== '') {
+                this.classList.add('has-value');
+                this.classList.remove('error');
+            } else {
+                this.classList.remove('has-value');
+            }
+            
+            // Validação de e-mail em tempo real
+            if (this.type === 'email' && this.value.trim() !== '') {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(this.value)) {
+                    this.classList.add('error');
+                } else {
+                    this.classList.remove('error');
+                }
+            }
+        });
+        
+        // Adiciona classe se já tem valor
+        if (input.value.trim() !== '') {
+            input.classList.add('has-value');
+        }
+    });
+}
