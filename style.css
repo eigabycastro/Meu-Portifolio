@@ -1404,21 +1404,21 @@ body.dark .rede-social:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.8);
   z-index: 2000;
   overflow-y: auto;
-  animation: fadeIn 0.4s ease-in-out;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
 .modal-content {
   background: var(--white);
-  margin: 5% auto;
+  margin: 2% auto;
   padding: 40px;
   max-width: 900px;
   border-radius: 24px;
   position: relative;
-  box-shadow: var(--shadow);
-  animation: slideInRight 0.6s ease-in-out;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: modalSlideIn 0.4s ease-out;
 }
 
 body.dark .modal-content {
@@ -1434,30 +1434,42 @@ body.dark .modal-content {
   color: var(--primary);
   cursor: pointer;
   transition: var(--transition);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .modal-close:hover {
-  color: var(--primary-light);
+  background: var(--primary);
+  color: white;
   transform: rotate(90deg);
 }
 
-.modal h2 {
-  text-align: center;
-  margin-bottom: 30px;
+/* Nova animação específica para o modal */
+@keyframes modalSlideIn {
+  from {
+      opacity: 0;
+      transform: translateY(-50px) scale(0.9);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+  }
 }
 
-.modal .section-desc {
-  margin-bottom: 40px;
+/* Impedir scroll do body quando modal estiver aberto */
+body.modal-open {
+  overflow: hidden;
 }
 
-.modal .projetos-grid {
-  margin-top: 20px;
-}
-
-/* Responsive adjustments for modal */
+/* Responsive */
 @media (max-width: 768px) {
   .modal-content {
-      margin: 10% 5%;
-      padding: 20px;
+      margin: 5%;
+      padding: 30px 20px;
   }
 }
