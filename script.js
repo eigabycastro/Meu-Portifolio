@@ -18,39 +18,42 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-    const modal = document.getElementById('projetos-modal');
-    const verMaisBtn = document.getElementById('ver-mais');
-    const closeModal = document.querySelector('.modal-close');
+    const detailModals = document.querySelectorAll('.modal');
+    const modalTriggers = document.querySelectorAll('[data-modal-target]');
 
-    // Abrir modal
-    verMaisBtn.addEventListener('click', function () {
-        modal.style.display = 'block';
+    const openModalById = (id) => {
+        const targetModal = document.getElementById(id);
+        if (!targetModal) return;
+        targetModal.style.display = 'block';
         document.body.classList.add('modal-open');
         document.body.style.overflow = 'hidden';
-    });
+    };
 
-    // Fechar modal
-    closeModal.addEventListener('click', function () {
-        modal.style.display = 'none';
+    const closeOpenModals = () => {
+        detailModals.forEach(item => {
+            item.style.display = 'none';
+        });
         document.body.classList.remove('modal-open');
         document.body.style.overflow = '';
+    };
+
+    modalTriggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+            openModalById(trigger.dataset.modalTarget);
+        });
     });
 
-    // Fechar modal clicando fora
-    modal.addEventListener('click', function (e) {
-        if (e.target === modal) {
-            modal.style.display = 'none';
-            document.body.classList.remove('modal-open');
-            document.body.style.overflow = '';
-        }
+    detailModals.forEach(item => {
+        item.addEventListener('click', event => {
+            if (event.target === item || event.target.closest('.modal-close')) {
+                closeOpenModals();
+            }
+        });
     });
 
-    // Fechar com ESC
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && modal.style.display === 'block') {
-            modal.style.display = 'none';
-            document.body.classList.remove('modal-open');
-            document.body.style.overflow = '';
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') {
+            closeOpenModals();
         }
     });
 
