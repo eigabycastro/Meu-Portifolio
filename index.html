@@ -11,63 +11,115 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script>
+        document.documentElement.classList.add('js');
+        try {
+            const saved = localStorage.getItem('darkMode');
+            if (saved === 'enabled' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            }
+        } catch (e) { }
+    </script>
 </head>
 
 <body>
-    <header>
+    <header class="site-header">
         <div class="container header-inner">
-            <div class="logo">🦋 <span>Gaby</span>Castro</div>
-            <nav>
+            <a href="#inicio" class="logo" aria-label="Início">
+                <span class="logo-mark">GC</span>
+                <span class="logo-text">Gabrielly <span>Castro</span></span>
+            </a>
+            <nav aria-label="Navegação principal">
                 <ul>
                     <li><a href="#sobre">Sobre</a></li>
                     <li><a href="#projetos">Projetos</a></li>
                     <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="#depoimentos">Depoimentos</a></li>
                     <li><a href="#contato" class="btn-contato">Contato</a></li>
-                    <li><button id="toggle-dark" aria-label="Alternar modo escuro"><i class="fas fa-moon"></i></button>
-                    </li>
                 </ul>
-                <button class="menu-mobile" aria-label="Menu mobile"><i class="fas fa-bars"></i></button>
+                <button id="toggle-dark" class="icon-btn" aria-label="Alternar modo escuro"><i
+                        class="fas fa-moon"></i></button>
+                <button class="menu-mobile icon-btn" aria-label="Abrir menu"><i class="fas fa-bars"></i></button>
             </nav>
         </div>
+        <div class="scroll-progress"></div>
     </header>
 
     <main>
-        <section class="hero">
+        <section class="hero" id="inicio">
+            <div class="blobs" aria-hidden="true"><span></span><span></span><span></span></div>
             <div class="container hero-inner">
-                <div class="hero-content">
-                    <h1>Oi, eu sou a <span class="destaque">Gabrielly Castro</span></h1>
-                    <p class="subtitulo">Desenvolvedora de Software</p>
-                    <p class="descricao">Transformo ideias em sistemas, interfaces e soluções que tornam
-                        processos mais simples — sempre com curiosidade, criatividade
-                        e vontade de descobrir como as coisas funcionam.
-                    </p>
+                <div class="hero-content reveal">
+                    <span class="status-pill"><span class="status-dot"></span> Aberta a novas oportunidades</span>
+                    <p class="hero-saudacao">Oi, eu sou a <span class="ola">👋</span></p>
+                    <h1 class="texto-gradiente">Gabrielly Castro</h1>
+                    <p class="subtitulo" data-papeis="Desenvolvedora de Software|Criadora de interfaces|Automação &amp; integrações|Sistemas web com Python">Desenvolvedora de Software</p>
+                    <p class="descricao">Transformo ideias em sistemas, interfaces e automações que tornam processos
+                        mais simples — do frontend à integração com dados e serviços.</p>
                     <div class="hero-buttons">
-                        <a href="#projetos" class="btn btn-primary">
-                            <i class="fas fa-eye"></i> Ver projetos
-                        </a>
-                        <a href="#contato" class="btn btn-secondary">
-                            <i class="fas fa-paper-plane"></i> Fale comigo
-                        </a>
+                        <a href="#projetos" class="btn btn-primary">Ver projetos <i class="fas fa-arrow-right"></i></a>
+                        <a href="#contato" class="btn btn-secondary">Fale comigo</a>
+                    </div>
+                    <div class="hero-redes">
+                        <a href="https://github.com/eigabycastro" target="_blank" rel="noopener" aria-label="GitHub"><i
+                                class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/gabriellycastropaula/" target="_blank" rel="noopener"
+                            aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="mailto:gabycastropp@gmail.com" aria-label="E-mail"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <img src="imagens/image.jpg" alt="foto" class="avatar">
-                    <div class="decoracao"></div>
+                <div class="hero-image reveal">
+                    <div class="avatar-frame">
+                        <img src="imagens/image.jpg" alt="Foto de Gabrielly Castro" class="avatar">
+                        <img src="imagens/borboleta.png" alt="" class="borboleta-deco" aria-hidden="true">
+                        <span class="avatar-badge avatar-badge-1"><i class="fas fa-code"></i> Full stack</span>
+                        <span class="avatar-badge avatar-badge-2"><i class="fas fa-robot"></i> Automação</span>
+                    </div>
                 </div>
+            </div>
+            <div class="container">
+                <dl class="hero-facts reveal">
+                    <div>
+                        <dt>Formação</dt>
+                        <dd>Sistemas de Informação</dd>
+                    </div>
+                    <div>
+                        <dt>Base técnica</dt>
+                        <dd>Técnica em Informática</dd>
+                    </div>
+                    <div>
+                        <dt>Foco</dt>
+                        <dd>Sistemas web &amp; automação</dd>
+                    </div>
+                    <div>
+                        <dt>Stack principal</dt>
+                        <dd>Python · Flask · JavaScript</dd>
+                    </div>
+                </dl>
             </div>
         </section>
 
+        <div class="marquee" aria-hidden="true">
+            <div class="marquee-track">
+                <span>Python</span><span>Flask</span><span>JavaScript</span><span>React</span><span>SQL</span>
+                <span>Node.js</span><span>Power BI</span><span>UI/UX</span><span>Figma</span><span>Automação</span>
+                <span>Python</span><span>Flask</span><span>JavaScript</span><span>React</span><span>SQL</span>
+                <span>Node.js</span><span>Power BI</span><span>UI/UX</span><span>Figma</span><span>Automação</span>
+            </div>
+        </div>
+
         <section id="sobre" class="sobre">
             <div class="container sobre-inner">
-                <div class="sobre-content">
-                    <h2>Sobre <span>mim</span></h2>
-                    <p>Sou a Gaby, estudante de Sistemas de Informação e técnica em Informática. Sempre gostei de
-                        entender como as coisas funcionam e, principalmente,
-                        de descobrir como a tecnologia pode transformar uma ideia em algo concreto.</p>
+                <div class="section-head section-head-left reveal">
+                    <span class="eyebrow">01 — Sobre</span>
+                    <h2>Tecnologia, lógica e <span class="texto-gradiente">resolução de problemas.</span></h2>
+                </div>
+                <div class="sobre-content reveal">
+                    <p class="lead">Sou a Gaby, estudante de Sistemas de Informação e técnica em Informática. Sempre
+                        gostei de entender como as coisas funcionam e, principalmente, de descobrir como a tecnologia
+                        pode transformar uma ideia em algo concreto.</p>
                     <p>Gosto de criar interfaces bonitas, mas também gosto de estar por trás delas: pensar na lógica,
                         estruturar as informações, automatizar processos e descobrir por que alguma coisa não está
                         funcionando. Para mim, desenvolver não é apenas escrever código, mas encontrar uma forma
@@ -76,56 +128,70 @@
                         sistemas internos, automação de processos, análise de dados e suporte em tecnologia, tendo
                         contato com diferentes etapas de um projeto. Isso me fez perceber que gosto justamente dessa
                         mistura entre tecnologia, criatividade e resolução de problemas.</p>
-                    <p>Sou curiosa, gosto de aprender coisas novas e tenho uma tendência a querer entender como tudo
-                        funciona — mesmo quando comecei a mexer em algo sem nenhuma intenção de passar horas tentando
-                        descobrir por que aquilo não estava funcionando.</p>
                     <p>No fim, é isso que mais gosto na tecnologia: pegar uma ideia que existe só na cabeça e
                         transformá-la em algo que realmente funciona.</p>
+
                     <div class="skills">
-                        <h3>O que faz parte da minha caixa de ferramentas</h3>
-                        <div class="skills-list">
-                            <span>HTML5 & CSS3</span>
-                            <span>JavaScript</span>
-                            <span>React</span>
-                            <span>Python</span>
-                            <span>Flask</span>
-                            <span>SQL</span>
-                            <span>Node.js</span>
-                            <span>Git & GItHub</span>
-                            <span>Automação</span>
-                            <span>Power BI</span>
-                            <span>UI/UX</span>
-                            <span>Figma</span>
+                        <h3>Ferramentas e tecnologias</h3>
+                        <div class="skills-grid">
+                            <div class="skill-group">
+                                <h4><i class="fas fa-display"></i> Frontend</h4>
+                                <div class="skills-list">
+                                    <span>HTML5 &amp; CSS3</span>
+                                    <span>JavaScript</span>
+                                    <span>React</span>
+                                    <span>UI/UX</span>
+                                    <span>Figma</span>
+                                </div>
+                            </div>
+                            <div class="skill-group">
+                                <h4><i class="fas fa-server"></i> Backend &amp; Dados</h4>
+                                <div class="skills-list">
+                                    <span>Python</span>
+                                    <span>Flask</span>
+                                    <span>Node.js</span>
+                                    <span>SQL</span>
+                                    <span>Power BI</span>
+                                </div>
+                            </div>
+                            <div class="skill-group">
+                                <h4><i class="fas fa-gears"></i> Processos</h4>
+                                <div class="skills-list">
+                                    <span>Git &amp; GitHub</span>
+                                    <span>Automação</span>
+                                    <span>Integrações</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="sobre-image">
-                    <img src="imagens/rabbit-lady.gif" alt="coelho" class="sobre-img">
                 </div>
             </div>
         </section>
 
         <section class="projetos" id="projetos">
             <div class="container">
-                <h2>Projetos</h2>
-                <p class="section-desc">Sistemas, automações e interfaces que mostram como transformo necessidades reais
-                    em soluções de software.</p>
+                <div class="section-head reveal">
+                    <span class="eyebrow">02 — Projetos</span>
+                    <h2>Trabalhos <span class="texto-gradiente">selecionados</span></h2>
+                    <p class="section-desc">Sistemas, automações e interfaces que mostram como transformo necessidades
+                        reais em soluções de software.</p>
+                </div>
 
-                <article class="projeto-destaque">
+                <article class="projeto-destaque reveal">
                     <div class="projeto-destaque-media">
                         <img src="imagens/notebook2.gif" alt="Interface ilustrativa do Sistema de Treinamento">
-                        <span class="projeto-badge">Projeto em destaque</span>
+                        <span class="projeto-badge">Em destaque</span>
                     </div>
                     <div class="projeto-destaque-info">
-                        <span class="projeto-tipo">Profissional • Sistema web interno</span>
+                        <span class="projeto-tipo">Profissional · Sistema web interno</span>
                         <h3>Sistema de Treinamento</h3>
                         <p>Plataforma para gestão de treinamentos técnicos, reunindo solicitações, aprovações,
                             agenda, clientes, biblioteca de materiais e avaliações em um fluxo integrado.</p>
-                        <div class="projeto-resumo">
-                            <span><i class="fas fa-layer-group"></i> Full stack</span>
-                            <span><i class="fas fa-database"></i> Banco de dados</span>
-                            <span><i class="fas fa-link"></i> Integrações</span>
-                        </div>
+                        <ul class="projeto-resumo">
+                            <li><i class="fas fa-layer-group"></i> Full stack</li>
+                            <li><i class="fas fa-database"></i> Banco de dados</li>
+                            <li><i class="fas fa-link"></i> Integrações</li>
+                        </ul>
                         <div class="projeto-tags">
                             <span>Python</span>
                             <span>Flask</span>
@@ -136,27 +202,24 @@
                         </div>
                         <div class="projeto-acoes">
                             <button class="btn btn-primary" type="button" data-modal-target="modal-treinamento">
-                                <i class="fas fa-circle-info"></i> Ver detalhes
+                                Ver detalhes <i class="fas fa-arrow-right"></i>
                             </button>
-                            <span class="projeto-link-indisponivel">Demo pública: acesso restrito</span>
+                            <span class="projeto-link-indisponivel"><i class="fas fa-lock"></i> Projeto interno — código
+                                privado</span>
                         </div>
                     </div>
                 </article>
 
-                <div class="projetos-grid projetos-grid-atualizado">
-                    <article class="projeto">
+                <div class="projetos-grid">
+                    <article class="projeto reveal">
                         <div class="projeto-img">
-                            <img src="imagens/Pagina inicial.png" alt="Sistema de Gestão Integrada XCMG">
+                            <img src="imagens/Pagina inicial.png" alt="Tela inicial do Sistema de Gestão Integrada XCMG">
                         </div>
                         <div class="projeto-info">
-                            <span class="projeto-tipo">Profissional • Sistema web</span>
+                            <span class="projeto-tipo">Profissional · Sistema web</span>
                             <h3>Sistema de Gestão Integrada XCMG</h3>
                             <p>Aplicação Flask para registrar, consultar e visualizar processos internos com integração
                                 a planilhas e dashboards.</p>
-                            <div class="projeto-resumo projeto-resumo-card">
-                                <span><i class="fas fa-server"></i> Backend</span>
-                                <span><i class="fas fa-chart-line"></i> Dados</span>
-                            </div>
                             <div class="projeto-tags">
                                 <span>Python</span>
                                 <span>Flask</span>
@@ -164,30 +227,26 @@
                                 <span>Power BI</span>
                             </div>
                             <div class="projeto-card-acoes">
-                                <button class="btn btn-secondary" type="button" data-modal-target="modal-xcmg">
-                                    Ver detalhes
+                                <button class="link-btn" type="button" data-modal-target="modal-xcmg">
+                                    Ver detalhes <i class="fas fa-arrow-right"></i>
                                 </button>
                                 <a href="https://github.com/eigabycastro/Sistema-XCMG---Gestao-Integrada"
                                     class="projeto-text-link" target="_blank" rel="noopener">
-                                    <i class="fab fa-github"></i> GitHub
+                                    <i class="fab fa-github"></i> Código
                                 </a>
                             </div>
                         </div>
                     </article>
 
-                    <article class="projeto">
+                    <article class="projeto reveal">
                         <div class="projeto-img">
                             <img src="imagens/tela.jpeg" alt="Automação de Pagamentos">
                         </div>
                         <div class="projeto-info">
-                            <span class="projeto-tipo">Profissional • Automação</span>
+                            <span class="projeto-tipo">Profissional · Automação</span>
                             <h3>Automação de Pagamentos</h3>
                             <p>Script em Python para coletar solicitações por e-mail, organizar anexos e registrar dados
                                 em planilhas conectadas a relatórios.</p>
-                            <div class="projeto-resumo projeto-resumo-card">
-                                <span><i class="fas fa-robot"></i> Automação</span>
-                                <span><i class="fas fa-folder-open"></i> Arquivos</span>
-                            </div>
                             <div class="projeto-tags">
                                 <span>Python</span>
                                 <span>Outlook</span>
@@ -195,30 +254,26 @@
                                 <span>Google Sheets</span>
                             </div>
                             <div class="projeto-card-acoes">
-                                <button class="btn btn-secondary" type="button" data-modal-target="modal-pagamentos">
-                                    Ver detalhes
+                                <button class="link-btn" type="button" data-modal-target="modal-pagamentos">
+                                    Ver detalhes <i class="fas fa-arrow-right"></i>
                                 </button>
                                 <a href="https://github.com/eigabycastro/Automatiza-o_Pagamentos"
                                     class="projeto-text-link" target="_blank" rel="noopener">
-                                    <i class="fab fa-github"></i> GitHub
+                                    <i class="fab fa-github"></i> Código
                                 </a>
                             </div>
                         </div>
                     </article>
 
-                    <article class="projeto">
+                    <article class="projeto reveal">
                         <div class="projeto-img">
                             <img src="imagens/Lading_Page.png" alt="Landing Page BioSkin Patch">
                         </div>
                         <div class="projeto-info">
-                            <span class="projeto-tipo">Acadêmico • Frontend</span>
+                            <span class="projeto-tipo">Acadêmico · Frontend</span>
                             <h3>Landing Page BioSkin Patch</h3>
                             <p>Landing page responsiva para um produto fictício, com foco em apresentação visual,
                                 estrutura de seções e interações simples.</p>
-                            <div class="projeto-resumo projeto-resumo-card">
-                                <span><i class="fas fa-display"></i> Frontend</span>
-                                <span><i class="fas fa-mobile-screen"></i> Responsivo</span>
-                            </div>
                             <div class="projeto-tags">
                                 <span>HTML</span>
                                 <span>CSS</span>
@@ -226,12 +281,12 @@
                                 <span>UI</span>
                             </div>
                             <div class="projeto-card-acoes">
-                                <button class="btn btn-secondary" type="button" data-modal-target="modal-bioskin">
-                                    Ver detalhes
+                                <button class="link-btn" type="button" data-modal-target="modal-bioskin">
+                                    Ver detalhes <i class="fas fa-arrow-right"></i>
                                 </button>
                                 <a href="https://github.com/eigabycastro/Lading-Page" class="projeto-text-link"
                                     target="_blank" rel="noopener">
-                                    <i class="fab fa-github"></i> GitHub
+                                    <i class="fab fa-github"></i> Código
                                 </a>
                             </div>
                         </div>
@@ -240,20 +295,22 @@
             </div>
         </section>
 
-        <div class="modal project-detail-modal" id="modal-treinamento">
+        <div class="modal project-detail-modal" id="modal-treinamento" role="dialog" aria-modal="true"
+            aria-labelledby="modal-treinamento-titulo">
             <div class="modal-content project-detail-content">
                 <button class="modal-close" type="button" aria-label="Fechar detalhes"><i
                         class="fas fa-times"></i></button>
-                <span class="projeto-tipo">Profissional • Sistema web interno</span>
-                <h2>Sistema de Treinamento</h2>
-                <p class="modal-intro">Sistema local analisado. O repositório público ou demo pública precisa ser
-                    definido por mim antes de aparecer no portfólio.</p>
+                <span class="projeto-tipo">Profissional · Sistema web interno</span>
+                <h2 id="modal-treinamento-titulo">Sistema de Treinamento</h2>
+                <p class="modal-intro">Sistema desenvolvido para uso interno. Por envolver dados corporativos, o código
+                    e a demonstração não são públicos — abaixo está um resumo do escopo e das decisões técnicas.</p>
+                <!-- Para publicação: usar apenas dados fictícios ou mascarados. Não expor funcionários, clientes,
+                     e-mails, senhas, tokens, URLs internas, anexos ou registros reais. -->
                 <div class="project-detail-grid">
                     <div>
                         <h3>Problema</h3>
                         <p>Centralizar a operação de treinamentos técnicos, evitando que solicitações, agenda,
-                            materiais,
-                            clientes e avaliações fiquem espalhados em processos manuais.</p>
+                            materiais, clientes e avaliações fiquem espalhados em processos manuais.</p>
                     </div>
                     <div>
                         <h3>Solução desenvolvida</h3>
@@ -263,7 +320,7 @@
                     </div>
                 </div>
                 <div class="project-detail-section">
-                    <h3>Funcionalidades confirmadas no código</h3>
+                    <h3>Principais funcionalidades</h3>
                     <ul class="project-detail-list">
                         <li>Login, sessão, troca de senha e controle por perfil/departamento.</li>
                         <li>Dashboard, indicadores, solicitações, aprovação e recusa com motivo obrigatório.</li>
@@ -284,25 +341,25 @@
                     <span>Render</span>
                     <span>Vercel</span>
                 </div>
-                <p class="confidential-note">Para publicação: usar apenas dados fictícios ou mascarados. Não expor
-                    funcionários, clientes, e-mails, senhas, tokens, URLs internas, anexos ou registros reais.</p>
             </div>
         </div>
 
-        <div class="modal project-detail-modal" id="modal-xcmg">
+        <div class="modal project-detail-modal" id="modal-xcmg" role="dialog" aria-modal="true"
+            aria-labelledby="modal-xcmg-titulo">
             <div class="modal-content project-detail-content">
                 <button class="modal-close" type="button" aria-label="Fechar detalhes"><i
                         class="fas fa-times"></i></button>
-                <span class="projeto-tipo">Profissional • Sistema web</span>
-                <h2>Sistema de Gestão Integrada XCMG</h2>
+                <span class="projeto-tipo">Profissional · Sistema web</span>
+                <h2 id="modal-xcmg-titulo">Sistema de Gestão Integrada XCMG</h2>
                 <p class="modal-intro">Aplicação web modular para apoiar registros e consultas de processos internos,
                     descrita de forma segura e sem exposição de dados corporativos.</p>
+                <!-- Para publicação: não expor dados financeiros, funcionários, fornecedores, documentos, URLs
+                     internas, credenciais ou prints com informações sensíveis. -->
                 <div class="project-detail-grid">
                     <div>
                         <h3>O que faz</h3>
                         <p>Reúne módulos de registros financeiros, Lei do Bem, traduções técnicas e visualização de
-                            dados
-                            em uma interface Flask com formulários e endpoints JSON.</p>
+                            dados em uma interface Flask com formulários e endpoints JSON.</p>
                     </div>
                     <div>
                         <h3>Integrações</h3>
@@ -311,7 +368,7 @@
                     </div>
                 </div>
                 <div class="project-detail-section">
-                    <h3>Funcionalidades confirmadas no código</h3>
+                    <h3>Principais funcionalidades</h3>
                     <ul class="project-detail-list">
                         <li>Rotas Flask para financeiro, Lei do Bem, tradução, visualização e dashboard.</li>
                         <li>Registro de dados em planilhas por módulo.</li>
@@ -330,30 +387,30 @@
                     <span>Power BI</span>
                 </div>
                 <div class="modal-actions">
-                    <a href="projeto-xcmg.html" class="btn btn-primary"><i class="fas fa-up-right-from-square"></i>
-                        Página do projeto</a>
+                    <a href="projeto-xcmg.html" class="btn btn-primary">Página do projeto <i
+                            class="fas fa-arrow-right"></i></a>
                     <a href="https://github.com/eigabycastro/Sistema-XCMG---Gestao-Integrada" class="btn btn-secondary"
                         target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
                 </div>
-                <p class="confidential-note">Para publicação: não expor dados financeiros, funcionários, fornecedores,
-                    documentos, URLs internas, credenciais ou prints com informações sensíveis.</p>
             </div>
         </div>
 
-        <div class="modal project-detail-modal" id="modal-pagamentos">
+        <div class="modal project-detail-modal" id="modal-pagamentos" role="dialog" aria-modal="true"
+            aria-labelledby="modal-pagamentos-titulo">
             <div class="modal-content project-detail-content">
                 <button class="modal-close" type="button" aria-label="Fechar detalhes"><i
                         class="fas fa-times"></i></button>
-                <span class="projeto-tipo">Profissional • Automação</span>
-                <h2>Automação de Pagamentos</h2>
+                <span class="projeto-tipo">Profissional · Automação</span>
+                <h2 id="modal-pagamentos-titulo">Automação de Pagamentos</h2>
                 <p class="modal-intro">Automação em Python para organizar solicitações recebidas por e-mail, anexos e
                     registros em planilha sem depender de lançamento manual repetitivo.</p>
+                <!-- Para publicação: não usar prints de e-mails, fornecedores, valores, planilhas reais, boletos,
+                     notas fiscais ou links internos. -->
                 <div class="project-detail-grid">
                     <div>
                         <h3>O que faz</h3>
                         <p>Lê e-mails do Outlook, extrai dados estruturados com regex, salva PDFs, envia anexos ao
-                            Google
-                            Drive e registra novas solicitações no Google Sheets.</p>
+                            Google Drive e registra novas solicitações no Google Sheets.</p>
                     </div>
                     <div>
                         <h3>Cuidados de dados</h3>
@@ -373,17 +430,16 @@
                     <a href="https://github.com/eigabycastro/Automatiza-o_Pagamentos" class="btn btn-primary"
                         target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
                 </div>
-                <p class="confidential-note">Para publicação: não usar prints de e-mails, fornecedores, valores,
-                    planilhas reais, boletos, notas fiscais ou links internos.</p>
             </div>
         </div>
 
-        <div class="modal project-detail-modal" id="modal-bioskin">
+        <div class="modal project-detail-modal" id="modal-bioskin" role="dialog" aria-modal="true"
+            aria-labelledby="modal-bioskin-titulo">
             <div class="modal-content project-detail-content">
                 <button class="modal-close" type="button" aria-label="Fechar detalhes"><i
                         class="fas fa-times"></i></button>
-                <span class="projeto-tipo">Acadêmico • Frontend</span>
-                <h2>Landing Page BioSkin Patch</h2>
+                <span class="projeto-tipo">Acadêmico · Frontend</span>
+                <h2 id="modal-bioskin-titulo">Landing Page BioSkin Patch</h2>
                 <p class="modal-intro">Projeto acadêmico de landing page para um produto fictício, usado como apoio para
                     demonstrar composição visual, responsividade e interações simples.</p>
                 <div class="project-detail-grid">
@@ -413,100 +469,98 @@
 
         <section id="servicos" class="servicos">
             <div class="container">
-                <h2>O que eu <span>desenvolvo</span></h2>
-                <p class="section-desc">Transformo necessidades em soluções digitais, combinando desenvolvimento,
-                    automação e experiência do usuário.</p>
+                <div class="section-head reveal">
+                    <span class="eyebrow">03 — Serviços</span>
+                    <h2>O que eu <span class="texto-gradiente">desenvolvo</span></h2>
+                    <p class="section-desc">Transformo necessidades em soluções digitais, combinando desenvolvimento,
+                        automação e experiência do usuário.</p>
+                </div>
                 <div class="servicos-grid">
-                    <div class="servico-card">
-                        <div class="servico-icon">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
+                    <div class="servico-card reveal">
+                        <div class="servico-icon"><i class="fas fa-laptop-code"></i></div>
                         <h3>Desenvolvimento Web</h3>
-                        <p>Desenvolvimento de aplicações web responsivas e funcionais,
-                            desde a interface até a integração com o backend.</p>
+                        <p>Aplicações web responsivas e funcionais, desde a interface até a integração com o
+                            backend.</p>
                     </div>
-                    <div class="servico-card">
-                        <div class="servico-icon">
-                            <i class="fas fa-server"></i>
-                        </div>
-                        <h3>Sistemas & Backend</h3>
-                        <p> Desenvolvimento de sistemas, regras de negócio, APIs,
-                            autenticação, formulários e integração com bancos e serviços.</p>
+                    <div class="servico-card reveal">
+                        <div class="servico-icon"><i class="fas fa-server"></i></div>
+                        <h3>Sistemas &amp; Backend</h3>
+                        <p>Regras de negócio, APIs, autenticação, formulários e integração com bancos de dados e
+                            serviços.</p>
                     </div>
-                    <div class="servico-card">
-                        <div class="servico-icon">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <h3>Automação & Integrações</h3>
-                        <p>Automação de tarefas e processos, integração entre sistemas
-                            e organização de dados para reduzir atividades manuais.</p>
+                    <div class="servico-card reveal">
+                        <div class="servico-icon"><i class="fas fa-robot"></i></div>
+                        <h3>Automação &amp; Integrações</h3>
+                        <p>Automação de tarefas e processos, integração entre sistemas e organização de dados para
+                            reduzir atividades manuais.</p>
                     </div>
-                    <div class="servico-card">
-                        <div class="servico-icon">
-                            <i class="fas fa-layer-group"></i>
-                        </div>
-                        <h3>Interfaces & UX</h3>
-                        <p>Criação de interfaces organizadas, responsivas e intuitivas,
-                            unindo funcionalidade, clareza visual e experiência do usuário.</p>
+                    <div class="servico-card reveal">
+                        <div class="servico-icon"><i class="fas fa-pen-ruler"></i></div>
+                        <h3>Interfaces &amp; UX</h3>
+                        <p>Interfaces organizadas, responsivas e intuitivas, unindo funcionalidade, clareza visual e
+                            boa experiência de uso.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contato" class="contato reveal">
+        <section id="contato" class="contato">
             <div class="container contato-inner">
-                <div class="contato-content">
-                    <h2>Vamos <span>conversar</span>?</h2>
-                    <p> Estou aberta a novas oportunidades, projetos e conexões na área de tecnologia.
-                        Se quiser conversar sobre desenvolvimento, projetos ou uma oportunidade profissional,
-                        entre em contato comigo!</p>
-                    <div class="contato-info">
-                        <div class="info-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>gabycastropp@gmail.com</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fab fa-whatsapp"></i>
-                            <span>(35) 98409-8136</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fab fa-linkedin-in"></i>
-                            <span>https://www.linkedin.com/in/gabriellycastropaula/</span>
-                        </div>
-                    </div>
-                    <div class="contato-redes">
-                        <a href="https://github.com/eigabycastro" class="rede-social" aria-label="GitHub"><i
-                                class="fab fa-github"></i></a>
-                        <a href="https://www.instagram.com/eigabycastro/profilecard/?igsh=MXdpb2xnZzJ3aGE5cw=="
-                            class="rede-social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    </div>
+                <div class="contato-content reveal">
+                    <span class="eyebrow">04 — Contato</span>
+                    <h2>Vamos <span class="texto-gradiente">conversar</span>? 💜</h2>
+                    <p>Estou aberta a novas oportunidades, projetos e conexões na área de tecnologia. Se quiser
+                        conversar sobre desenvolvimento, projetos ou uma oportunidade profissional, entre em contato.
+                    </p>
+                    <ul class="contato-info">
+                        <li>
+                            <a href="mailto:gabycastropp@gmail.com" class="info-item">
+                                <i class="fas fa-envelope"></i>
+                                <span><small>E-mail</small>gabycastropp@gmail.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://wa.me/5535984098136" class="info-item" target="_blank" rel="noopener">
+                                <i class="fab fa-whatsapp"></i>
+                                <span><small>WhatsApp</small>(35) 98409-8136</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/gabriellycastropaula/" class="info-item"
+                                target="_blank" rel="noopener">
+                                <i class="fab fa-linkedin-in"></i>
+                                <span><small>LinkedIn</small>/in/gabriellycastropaula</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/eigabycastro" class="info-item" target="_blank" rel="noopener">
+                                <i class="fab fa-github"></i>
+                                <span><small>GitHub</small>@eigabycastro</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                <form class="contato-form" id="contact-form" action="https://getform.io/f/aqoeyora" method="POST">
-                    <div class="form-group floating">
-                        <input type="text" id="nome" name="nome" required placeholder=" "
-                            aria-label="Seu nome completo">
-                        <label for="nome">Seu nome completo</label>
-                        <span class="focus-border"></span>
-                        <i class="fas fa-user"></i>
+                <form class="contato-form reveal" id="contact-form" action="https://getform.io/f/aqoeyora"
+                    method="POST" novalidate>
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" name="nome" required placeholder="Seu nome completo"
+                            autocomplete="name">
                     </div>
-                    <div class="form-group floating">
-                        <input type="email" id="email" name="email" required placeholder=" "
-                            aria-label="Seu melhor e-mail">
-                        <label for="email">Seu melhor e-mail</label>
-                        <span class="focus-border"></span>
-                        <i class="fas fa-envelope"></i>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required placeholder="voce@exemplo.com"
+                            autocomplete="email">
                     </div>
-                    <div class="form-group floating">
-                        <textarea id="mensagem" name="mensagem" rows="5" required placeholder=" "
-                            aria-label="Sua mensagem"></textarea>
-                        <label for="mensagem">Sua mensagem</label>
-                        <span class="focus-border"></span>
-                        <i class="fas fa-comment"></i>
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem</label>
+                        <textarea id="mensagem" name="mensagem" rows="5" required
+                            placeholder="Conte um pouco sobre o projeto ou a oportunidade"></textarea>
                     </div>
                     <div class="form-footer">
                         <button type="submit" class="btn btn-primary">
                             <span class="btn-text">Enviar mensagem</span>
-                            <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+                            <i class="fas fa-paper-plane"></i>
                         </button>
                         <div class="form-feedback" role="alert"></div>
                     </div>
@@ -515,49 +569,31 @@
         </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <div class="logo">🦋 <span>Gaby</span>Castro</div>
-                    <p>Criando experiências digitais memoráveis.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Links rápidos</h4>
-                    <ul>
-                        <li><a href="#sobre">Sobre</a></li>
-                        <li><a href="#projetos">Projetos</a></li>
-                        <li><a href="#servicos">Serviços</a></li>
-                        <li><a href="#contato">Contato</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contato">
-                    <h4>Contato</h4>
-                    <ul>
-                        <li><i class="fas fa-envelope"></i> gabycastropp@gmail.com</li>
-                        <li><i class="fab fa-whatsapp"></i> (35) 98409-8136</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2025 Gabrielly Castro. Todos os direitos reservados.</p>
-                <div class="footer-redes">
-                    <a href="https://github.com/eigabycastro" class="rede-social" aria-label="GitHub"><i
-                            class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/gabriellycastropaula/"
-                        class="rede-social" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://www.instagram.com/eigabycastro/profilecard/?igsh=MXdpb2xnZzJ3aGE5cw=="
-                        class="rede-social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                </div>
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>© <span id="ano-atual">2026</span> Gabrielly Castro. Todos os direitos reservados.</p>
+            <ul class="footer-links">
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <div class="footer-redes">
+                <a href="https://github.com/eigabycastro" target="_blank" rel="noopener" aria-label="GitHub"><i
+                        class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/gabriellycastropaula/" target="_blank" rel="noopener"
+                    aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/eigabycastro/" target="_blank" rel="noopener"
+                    aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
-
-    <div id="custom-cursor" class="custom-cursor">
-        <img src="imagens/borboleta.png" alt="Cursor de borboleta">
+    <div id="custom-cursor" class="custom-cursor hidden" aria-hidden="true">
+        <img src="imagens/borboleta.png" alt="">
     </div>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
